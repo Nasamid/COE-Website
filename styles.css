@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400..800&family=Dosis:wght@200..800&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    z-index: 10;
+    font-family: 'Baloo Tamma 2', sans-serif ;
+}
+
+.nav {
+    display: flex; /* Ensure the navigation items are in a row */
+    align-items: center; /* Vertically center navigation items */
+}
+
+.search-button {
+    padding: 0px 20px; /* Increased padding for a larger button */
+    border: none;
+    cursor: pointer;
+    display: flex; /* Center content */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    width: 0px; /* Increased width */
+    height: 0px; /* Increased height */
+    font-size: 2em; /* Adjust icon size */
+}
+
+/* If using an icon font or SVG inside the button */
+.search-button img {
+    width: 25px; /* Size of the SVG icon */
+    height: 25px; /* Size of the SVG icon */
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.8)); /* Drop shadow */
+}
+
+.search-button img:hover {
+    width: 30px; /* Size of the SVG icon */
+    height: 30px; /* Size of the SVG icon */
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 1.5)); /* Drop shadow */
+}
+
+
+.creator {
+    font-size: 0.8em;
+}
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.8)); /* Drop shadow */
+    display: flex; /* Ensure the navigation items are in a row */
+    align-items: center; /* Vertically center navigation items */
+}
+.nav a:hover{
+    font-weight: 700;
+}
+.hero {
+    height: 100vh;
+    background-image: url('img_src/background.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10%;
+}
+.hero-content {
+    display: flex;
+    align-items: center;
+}
+.logo {
+    width: 550px;
+    height: 550px;
+    margin-left: -50px;
+    margin-right: 20px;
+    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5)); /* Drop shadow */
+}
+.text-content {
+    color: white;
+}
+.text-content h1 {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 8em;
+    color: white; /* Default text color */
+    text-align: left;
+    margin: 0;
+    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5)); /* Drop shadow */
+    
+    /* Initial background and gradient settings */
+    background: linear-gradient(45deg, #cfc09f, #ff9102, #bd0808);
+    background-size: 400% 400%; /* Large size for smooth animation */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Transparent text to allow gradient */
+    background-clip: text;
+    
+    /* Animation to create diagonal, randomized movement */
+    animation: gradientDiagonal 5s ease-in-out infinite;
+}
+
+/* Keyframes for diagonal, randomized gradient animation */
+@keyframes gradientDiagonal {
+    0% {
+        background-position: 0% 0%;
+        background-size: 100% 100%;
+    }
+    25% {
+        background-position: 50% 0%;
+        background-size: 150% 150%;
+    }
+    50% {
+        background-position: 100% 100%;
+        background-size: 200% 200%;
+    }
+    75% {
+        background-position: 0% 100%;
+        background-size: 150% 150%;
+    }
+    100% {
+        background-position: 0% 0%;
+        background-size: 100% 100%;
+    }
+}
+
+.text-content h2 {
+    font-family: 'Dosis', sans-serif ;
+    font-weight: 500;
+    color: white;
+    text-align: left;
+    font-size: 4.5em;
+    margin: 0;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 1)); /* Drop shadow */
+}
+.text-content p {
+    font-family: 'Baloo Tamma 2', sans-serif;
+    margin-left: 10px;
+    font-size: 1.4em;
+    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.8)); /* Drop shadow */
+}
+
+.image-carousel {
+    background-color: #f4f4f4; /* Light background for the carousel */
+    padding: 20px;
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden; /* Hide overflow to show only one image at a time */
+    border-radius: 10px; /* Optional: rounded corners for the carousel */
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Smooth transition for sliding effect */
+}
+
+.carousel-image {
+    width: 100%;
+    flex: 0 0 100%; /* Ensure images fill the container */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 2em;
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
