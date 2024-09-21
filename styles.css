@@ -5,6 +5,13 @@ body, html {
     padding: 0;
     height: 100%;
 }
+
+body {
+    box-sizing: border-box;
+    place-items: center;
+    min-height: 100vh;
+}
+
 .header {
     position: fixed;
     top: 0;
@@ -18,13 +25,30 @@ body, html {
     z-index: 10;
     font-family: 'Baloo Tamma 2', sans-serif;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
-    
 }
 
 .nav {
     display: flex; /* Ensure the navigation items are in a row */
     align-items: center; /* Vertically center navigation items */
 }
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.8)); /* Drop shadow */
+    display: flex; /* Ensure the navigation items are in a row */
+    align-items: center; /* Vertically center navigation items */
+}
+
+.nav a:hover {
+    font-weight: 700;
+}
+
+.nav a.active, .dropbtn.active {
+    font-weight: bold;
+}
+
 .search-button {
     padding: 0px 20px; /* Increased padding for a larger button */
     border: none;
@@ -37,7 +61,6 @@ body, html {
     font-size: 2em; /* Adjust icon size */
 }
 
-/* If using an icon font or SVG inside the button */
 .search-button img {
     width: 25px; /* Size of the SVG icon */
     height: 25px; /* Size of the SVG icon */
@@ -49,6 +72,7 @@ body, html {
     height: 30px; /* Size of the SVG icon */
     filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 1.5)); /* Drop shadow */
 }
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -60,7 +84,7 @@ body, html {
     margin-left: -16px;
     background-color: transparent;
     min-width: 160px;
-    filter: drop-shadow( 0px 8px 16px 0px rgba(0,0,0,0.2));
+    filter: drop-shadow(0px 8px 16px 0px rgba(0, 0, 0, 0.2));
     z-index: 1;
     opacity: 0;
     transform: translateY(0px);
@@ -68,7 +92,7 @@ body, html {
 }
 
 .dropdown-content a {
-    color: black;
+    color: white;
     padding: 6px 16px;
     text-decoration: none;
     display: block;
@@ -94,7 +118,6 @@ body, html {
 }
 
 .dropdown:hover .dropdown-content a {
-
     opacity: 1;
     transform: translateX(0);
 }
@@ -144,23 +167,11 @@ body, html {
 .nav a.animate::after, .dropbtn.animate::after {
     animation: ripple 0.65s ease-out;
 }
-.nav a.active, .dropbtn.active {
-    font-weight: bold;
-}
+
 .creator {
     font-size: 0.8em;
 }
-.nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.8)); /* Drop shadow */
-    display: flex; /* Ensure the navigation items are in a row */
-    align-items: center; /* Vertically center navigation items */
-}
-.nav a:hover{
-    font-weight: 700;
-}
+
 .hero {
     height: 100vh;
     background-image: url('img_src/background.png');
@@ -171,17 +182,19 @@ body, html {
     justify-content: flex-start;
     padding-left: 10%;
 }
+
 .hero-content {
     display: flex;
     align-items: center;
 }
+
 .logo-container {
     position: absolute; /* Allows absolute positioning of the logos */
-    left:-430px;
-    width: 100%; 
+    left: -430px;
+    width: 100%;
     height: 550px; /* Set the height to fit the logos */
-
 }
+
 .logo, .cpe_logo, .ce_logo, .me_logo, .ee_logo, .mining_logo {
     width: 550px;
     height: 550px;
@@ -192,7 +205,8 @@ body, html {
     opacity: 0; /* Initially invisible */
     animation: logoMove 24s infinite; /* 24s total for all logos (4s per logo) */
 }
-.logo{
+
+.logo {
     animation-delay: 0s;
 }
 
@@ -215,6 +229,7 @@ body, html {
 .mining_logo {
     animation-delay: 20s;
 }
+
 /* Keyframes for moving the logo from left to center and then out again */
 @keyframes logoMove {
     0%, 100% {
@@ -222,10 +237,9 @@ body, html {
         top: -600px; /* Off-screen left */
         opacity: 0;
     }
-    5%{
+    5% {
         opacity: 1;
     }
-
     10% {
         left: 50%;
         top: 0%; /* Center of the screen */
@@ -234,16 +248,13 @@ body, html {
     11% { /* Hold the logo in the center */
         animation-delay: 2s;
     }
-
-    70%{
+    70% {
         opacity: 0;
     }
-
-    75%{
-        left:-9000px;
+    75% {
+        left: -9000px;
         top: 8000px;
     }
-
     85% {
         left: -500px;
         top: 600px; /* Move it off-screen to the right */
@@ -254,11 +265,13 @@ body, html {
         left: -500px; /* Off-screen right */
     }
 }
+
 .text-content {
     color: white;
-    position:absolute;
+    position: absolute;
     left: 600px;
 }
+
 .text-content h1 {
     font-family: 'Exo 2', sans-serif;
     font-size: 8em;
@@ -301,8 +314,9 @@ body, html {
         background-size: 100% 100%;
     }
 }
+
 .text-content h2 {
-    font-family: 'Dosis', sans-serif ;
+    font-family: 'Dosis', sans-serif;
     font-weight: 500;
     color: white;
     text-align: left;
@@ -310,6 +324,7 @@ body, html {
     margin: 0;
     filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 1)); /* Drop shadow */
 }
+
 .text-content p {
     font-family: 'Baloo Tamma 2', sans-serif;
     margin-left: 10px;
@@ -326,16 +341,14 @@ body, html {
     animation: typing 10s steps(100) infinite;
     animation: blinkCursor 10s steps(100) step-end;
     animation-delay: 2s;
-
 }
 
 /* Typing effect animation */
 @keyframes typing {
     0% { width: 0; }
-    52%{border-color: white;}
-    52.7% {border-color: transparent;} 
-    100% { width: 880px; border-color: transparent;}
-
+    52% { border-color: white; }
+    52.7% { border-color: transparent; } 
+    100% { width: 870px; border-color: transparent; }
 }
 
 /* Blinking cursor effect */
@@ -345,90 +358,88 @@ body, html {
     100% { border-color: transparent; }
 }
 
-body {
-box-sizing: border-box;
-place-items: center;
-min-height: 100vh;
-
-}
-
 ul {
-display: flex;
-width: calc(80% - 2rem);
-padding: 50px 170px;
-margin: 0;
-background-color: #024950;
-list-style-type: none;
+    display: flex;
+    width: calc(80% - 2.76rem);
+    padding: 50px 170px;
+    margin: 0;
+    background-color: #024950;
+    list-style-type: none;
 }
 
 li {
-padding: 0;
+    padding: 0;
 }
 
 img {
-display: grid;
-max-width: 100%;
-width: 100%;
-object-fit: cover;
-transition: all 0.2s ease;
+    display: grid;
+    max-width: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: all 0.2s ease;
 }
 
 ul:is(:hover, :focus-within) img {
-opacity: calc(0.1 + (var(--active-lerp, 0) * 0.9));
-filter: grayscale(calc(1 - var(--active-lerp, 0)));
+    opacity: calc(0.1 + (var(--active-lerp, 0) * 0.9));
+    filter: grayscale(calc(1 - var(--active-lerp, 0)));
 }
 
 :root {
---lerp-0: 1;
---lerp-1: 0.5787037;
---lerp-2: 0.2962963;
---lerp-3: 0.125;
---lerp-4: 0.037037;
---lerp-5: 0.0046296;
---lerp-6: 0;
+    --lerp-0: 1;
+    --lerp-1: 0.5787037;
+    --lerp-2: 0.2962963;
+    --lerp-3: 0.125;
+    --lerp-4: 0.037037;
+    --lerp-5: 0.0046296;
+    --lerp-6: 0;
 }
 
 a {
-outline-offset: 4px;
+    outline-offset: 4px;
 }
 
 li {
-flex: calc(0.1 + (var(--active-lerp, 0) * 1));
-transition: flex 0.2s ease;
+    flex: calc(0.1 + (var(--active-lerp, 0) * 1));
+    transition: flex 0.2s ease;
 }
 
 li:is(:hover, :focus-within) {
---active-lerp: var(--lerp-0);
-z-index: 7;
-}
-li:has( + li:is(:hover, :focus-within)),
-li:is(:hover, :focus-within) + li {
---active-lerp: var(--lerp-1);
-z-index: 6;
-}
-li:has( + li + li:is(:hover, :focus-within)),
-li:is(:hover, :focus-within) + li + li {
---active-lerp: var(--lerp-2);
-z-index: 5;
-}
-li:has( + li + li + li:is(:hover, :focus-within)),
-li:is(:hover, :focus-within) + li + li + li {
---active-lerp: var(--lerp-3);
-z-index: 4;
-}
-li:has( + li + li + li + li:is(:hover, :focus-within)),
-li:is(:hover, :focus-within) + li + li + li + li {
---active-lerp: var(--lerp-4);
-z-index: 3;
-}
-li:has( + li + li + li + li + li:is(:hover, :focus-within)),
-li:is(:hover, :focus-within) + li + li + li + li + li {
---active-lerp: var(--lerp-5);
-z-index: 2;
-}
-li:has( + li + li + li + li + li + li:is(:hover, :focus-within)),
-li:is(:hover, :focus-within) + li + li + li + li + li + li {
---active-lerp: var(--lerp-6);
-z-index: 1;
+    --active-lerp: var(--lerp-0);
+    z-index: 7;
 }
 
+li:has(+ li:is(:hover, :focus-within)),
+li:is(:hover, :focus-within) + li {
+    --active-lerp: var(--lerp-1);
+    z-index: 6;
+}
+
+li:has(+ li + li:is(:hover, :focus-within)),
+li:is(:hover, :focus-within) + li + li {
+    --active-lerp: var(--lerp-2);
+    z-index: 5;
+}
+
+li:has(+ li + li + li:is(:hover, :focus-within)),
+li:is(:hover, :focus-within) + li + li + li {
+    --active-lerp: var(--lerp-3);
+    z-index: 4;
+}
+
+li:has(+ li + li + li + li:is(:hover, :focus-within)),
+li:is(:hover, :focus-within) + li + li + li + li {
+    --active-lerp: var(--lerp-4);
+    z-index: 3;
+}
+
+li:has(+ li + li + li + li + li:is(:hover, :focus-within)),
+li:is(:hover, :focus-within) + li + li + li + li + li {
+    --active-lerp: var(--lerp-5);
+    z-index: 2;
+}
+
+li:has(+ li + li + li + li + li + li:is(:hover, :focus-within)),
+li:is(:hover, :focus-within) + li + li + li + li + li + li {
+    --active-lerp: var(--lerp-6);
+    z-index: 1;
+}
