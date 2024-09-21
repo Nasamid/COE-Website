@@ -87,7 +87,6 @@ body, html {
     height: 550px; /* Set the height to fit the logos */
 
 }
-
 .logo, .cpe_logo, .ce_logo, .me_logo, .ee_logo, .mining_logo {
     width: 550px;
     height: 550px;
@@ -96,33 +95,31 @@ body, html {
     left: -600px; /* Start from outside the screen on the left */
     filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5)); /* Drop shadow */
     opacity: 0; /* Initially invisible */
-    animation: logoMove 30s infinite; /* 24s total for all logos (4s per logo) */
+    animation: logoMove 24s infinite; /* 24s total for all logos (4s per logo) */
 }
-
 .logo{
-    animation-delay: -4s;
-}
-
-.cpe_logo {
     animation-delay: 0s;
 }
 
-.ce_logo {
+.cpe_logo {
     animation-delay: 4s;
 }
 
-.me_logo {
+.ce_logo {
     animation-delay: 8s;
 }
 
-.ee_logo {
+.me_logo {
     animation-delay: 12s;
 }
 
-.mining_logo {
+.ee_logo {
     animation-delay: 16s;
 }
 
+.mining_logo {
+    animation-delay: 20s;
+}
 /* Keyframes for moving the logo from left to center and then out again */
 @keyframes logoMove {
     0%, 100% {
@@ -162,9 +159,6 @@ body, html {
         left: -500px; /* Off-screen right */
     }
 }
-
-
-
 .text-content {
     color: white;
     position:absolute;
@@ -212,7 +206,6 @@ body, html {
         background-size: 100% 100%;
     }
 }
-
 .text-content h2 {
     font-family: 'Dosis', sans-serif ;
     font-weight: 500;
@@ -227,13 +220,41 @@ body, html {
     margin-left: 10px;
     font-size: 1.4em;
     filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.8)); /* Drop shadow */
+    
+    /* Typing effect properties */
+    width: 0; /* Start at 0 width for the typing effect */
+    overflow: hidden; /* Hide overflowed text */
+    white-space: nowrap; /* Keep the text in one line */
+    border-right: 2px solid #FFFFFF; /* Simulate cursor */
+    
+    /* Typing animation */
+    animation: typing 10s steps(100) infinite;
+    animation: blinkCursor 10s steps(100) step-end;
+    animation-delay: 2s;
+
 }
+
+/* Typing effect animation */
+@keyframes typing {
+    0% { width: 0; }
+    52%{border-color: white;}
+    52.7% {border-color: transparent;} 
+    100% { width: 880px; border-color: transparent;}
+
+}
+
+/* Blinking cursor effect */
+@keyframes blinkCursor {
+    0% { border-color: transparent; }
+    50% { border-color: #FFFFFF; }
+    100% { border-color: transparent; }
+}
+
 
 .image-carousel {
     background-color: #f4f4f4; /* Light background for the carousel */
     padding: 20px;
 }
-
 .carousel-container {
     position: relative;
     max-width: 800px;
@@ -241,18 +262,15 @@ body, html {
     overflow: hidden; /* Hide overflow to show only one image at a time */
     border-radius: 10px; /* Optional: rounded corners for the carousel */
 }
-
 .carousel-images {
     display: flex;
     transition: transform 0.5s ease-in-out; /* Smooth transition for sliding effect */
 }
-
 .carousel-image {
     width: 100%;
     flex: 0 0 100%; /* Ensure images fill the container */
     object-fit: cover; /* Maintain aspect ratio */
 }
-
 .carousel-prev, .carousel-next {
     position: absolute;
     top: 50%;
@@ -265,11 +283,9 @@ body, html {
     z-index: 10;
     font-size: 2em;
 }
-
 .carousel-prev {
     left: 10px;
 }
-
 .carousel-next {
     right: 10px;
 }
