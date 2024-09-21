@@ -100,7 +100,7 @@ body {
 
 .dropdown-content a:hover {
     color: black;
-    background-color: #fafafa;
+    background-color: rgb(255, 255, 255, 0.8);
 }
 
 .dropdown:hover .dropdown-content {
@@ -181,6 +181,8 @@ body {
     align-items: center;
     justify-content: flex-start;
     padding-left: 10%;
+    position: relative; /* Add this */
+    z-index: 1; /* Add this */
 }
 
 .hero-content {
@@ -360,12 +362,18 @@ body {
 
 ul {
     display: flex;
-    width: calc(80% - 2.76rem);
-    padding: 50px 170px;
+    width: 80% - 2.76rem; /* Changed from calc(80% - 2.76rem) */
+    padding: 50px 30px; /* Changed padding */
     margin: 0;
     background-color: #024950;
     list-style-type: none;
+    position: relative; /* Changed from static */
+    bottom: 10; /* Start at the bottom of the viewport */
+    left: 0; /* Align to the left */
+    transition: transform 0.1s ease-in; /* Smooth transition for transform */
+    z-index: 2; /* Above the hero section */
 }
+
 
 li {
     padding: 0;
