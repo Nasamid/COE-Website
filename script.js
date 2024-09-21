@@ -1,22 +1,30 @@
+
 document.addEventListener('DOMContentLoaded', () => {
-    const prevButton = document.querySelector('.carousel-prev');
-    const nextButton = document.querySelector('.carousel-next');
-    const carouselImages = document.querySelector('.carousel-images');
-    const images = document.querySelectorAll('.carousel-image');
-    let currentIndex = 0;
+    const navLinks = document.querySelectorAll('.nav a, .dropbtn');
 
-    function updateCarousel() {
-        const offset = -currentIndex * 100;
-        carouselImages.style.transform = `translateX(${offset}%)`;
-    }
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
 
-    prevButton.addEventListener('click', () => {
-        currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-        updateCarousel();
-    });
+            // Remove 'active' class from all links (this will remove bold from others)
+            navLinks.forEach(l => l.classList.remove('active'));
 
-    nextButton.addEventListener('click', () => {
-        currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-        updateCarousel();
+            // Add 'active' class to the clicked link to keep it bold
+            this.classList.add('active');
+
+            // Add animate class for click animation
+            this.classList.add('animate');
+
+            // Remove animate class after animation completes
+            setTimeout(() => {
+                this.classList.remove('animate');
+            }, 700);
+
+            // If it's a dropdown button, toggle the dropdown content visibility
+            if (this.classList.contains('dropbtn')) {
+                const dropdownContent = this.nextElementSibling;
+                dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+            }
+        });
     });
 });

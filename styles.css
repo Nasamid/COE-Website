@@ -25,7 +25,6 @@ body, html {
     display: flex; /* Ensure the navigation items are in a row */
     align-items: center; /* Vertically center navigation items */
 }
-
 .search-button {
     padding: 0px 20px; /* Increased padding for a larger button */
     border: none;
@@ -50,8 +49,104 @@ body, html {
     height: 30px; /* Size of the SVG icon */
     filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 1.5)); /* Drop shadow */
 }
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
 
+.dropdown-content {
+    display: none;
+    position: absolute;
+    margin-left: -16px;
+    background-color: transparent;
+    min-width: 160px;
+    filter: drop-shadow( 0px 8px 16px 0px rgba(0,0,0,0.2));
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(0px);
+    transition: opacity 0.3s, transform 0.3s;
+}
 
+.dropdown-content a {
+    color: black;
+    padding: 6px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    color: black;
+    background-color: #fafafa;
+}
+
+.dropdown:hover .dropdown-content {
+    color: black;
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animation for dropdown items */
+.dropdown-content a {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.dropdown:hover .dropdown-content a {
+
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Staggered animation for dropdown items */
+.dropdown:hover .dropdown-content a:nth-child(1) { transition-delay: 0.1s; }
+.dropdown:hover .dropdown-content a:nth-child(2) { transition-delay: 0.2s; }
+.dropdown:hover .dropdown-content a:nth-child(3) { transition-delay: 0.3s; }
+.dropdown:hover .dropdown-content a:nth-child(4) { transition-delay: 0.4s; }
+.dropdown:hover .dropdown-content a:nth-child(5) { transition-delay: 0.5s; }
+
+/* Animation for clicked items */
+.nav a, .dropbtn {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav a::after, .dropbtn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: transparent;
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 1;
+    }
+    20% {
+        transform: scale(25, 25);
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(40, 40);
+    }
+}
+
+.nav a.animate::after, .dropbtn.animate::after {
+    animation: ripple 0.65s ease-out;
+}
+.nav a.active, .dropbtn.active {
+    font-weight: bold;
+}
 .creator {
     font-size: 0.8em;
 }
@@ -250,42 +345,90 @@ body, html {
     100% { border-color: transparent; }
 }
 
+body {
+box-sizing: border-box;
+place-items: center;
+min-height: 100vh;
 
-.image-carousel {
-    background-color: #f4f4f4; /* Light background for the carousel */
-    padding: 20px;
 }
-.carousel-container {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    overflow: hidden; /* Hide overflow to show only one image at a time */
-    border-radius: 10px; /* Optional: rounded corners for the carousel */
+
+ul {
+display: flex;
+width: calc(80% - 2rem);
+padding: 50px 170px;
+margin: 0;
+background-color: #024950;
+list-style-type: none;
 }
-.carousel-images {
-    display: flex;
-    transition: transform 0.5s ease-in-out; /* Smooth transition for sliding effect */
+
+li {
+padding: 0;
 }
-.carousel-image {
-    width: 100%;
-    flex: 0 0 100%; /* Ensure images fill the container */
-    object-fit: cover; /* Maintain aspect ratio */
+
+img {
+display: grid;
+max-width: 100%;
+width: 100%;
+object-fit: cover;
+transition: all 0.2s ease;
 }
-.carousel-prev, .carousel-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
-    font-size: 2em;
+
+ul:is(:hover, :focus-within) img {
+opacity: calc(0.1 + (var(--active-lerp, 0) * 0.9));
+filter: grayscale(calc(1 - var(--active-lerp, 0)));
 }
-.carousel-prev {
-    left: 10px;
+
+:root {
+--lerp-0: 1;
+--lerp-1: 0.5787037;
+--lerp-2: 0.2962963;
+--lerp-3: 0.125;
+--lerp-4: 0.037037;
+--lerp-5: 0.0046296;
+--lerp-6: 0;
 }
-.carousel-next {
-    right: 10px;
+
+a {
+outline-offset: 4px;
 }
+
+li {
+flex: calc(0.1 + (var(--active-lerp, 0) * 1));
+transition: flex 0.2s ease;
+}
+
+li:is(:hover, :focus-within) {
+--active-lerp: var(--lerp-0);
+z-index: 7;
+}
+li:has( + li:is(:hover, :focus-within)),
+li:is(:hover, :focus-within) + li {
+--active-lerp: var(--lerp-1);
+z-index: 6;
+}
+li:has( + li + li:is(:hover, :focus-within)),
+li:is(:hover, :focus-within) + li + li {
+--active-lerp: var(--lerp-2);
+z-index: 5;
+}
+li:has( + li + li + li:is(:hover, :focus-within)),
+li:is(:hover, :focus-within) + li + li + li {
+--active-lerp: var(--lerp-3);
+z-index: 4;
+}
+li:has( + li + li + li + li:is(:hover, :focus-within)),
+li:is(:hover, :focus-within) + li + li + li + li {
+--active-lerp: var(--lerp-4);
+z-index: 3;
+}
+li:has( + li + li + li + li + li:is(:hover, :focus-within)),
+li:is(:hover, :focus-within) + li + li + li + li + li {
+--active-lerp: var(--lerp-5);
+z-index: 2;
+}
+li:has( + li + li + li + li + li + li:is(:hover, :focus-within)),
+li:is(:hover, :focus-within) + li + li + li + li + li + li {
+--active-lerp: var(--lerp-6);
+z-index: 1;
+}
+
