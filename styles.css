@@ -6,7 +6,7 @@ body, html {
     height: 100%;
 }
 .header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -16,7 +16,9 @@ body, html {
     align-items: center;
     color: white;
     z-index: 10;
-    font-family: 'Baloo Tamma 2', sans-serif ;
+    font-family: 'Baloo Tamma 2', sans-serif;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    
 }
 
 .nav {
@@ -78,15 +80,95 @@ body, html {
     display: flex;
     align-items: center;
 }
-.logo {
+.logo-container {
+    position: absolute; /* Allows absolute positioning of the logos */
+    left:-430px;
+    width: 100%; 
+    height: 550px; /* Set the height to fit the logos */
+
+}
+
+.logo, .cpe_logo, .ce_logo, .me_logo, .ee_logo, .mining_logo {
     width: 550px;
     height: 550px;
-    margin-left: -50px;
-    margin-right: 20px;
+    position: absolute;
+    top: 0;
+    left: -600px; /* Start from outside the screen on the left */
     filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5)); /* Drop shadow */
+    opacity: 0; /* Initially invisible */
+    animation: logoMove 30s infinite; /* 24s total for all logos (4s per logo) */
 }
+
+.logo{
+    animation-delay: -4s;
+}
+
+.cpe_logo {
+    animation-delay: 0s;
+}
+
+.ce_logo {
+    animation-delay: 4s;
+}
+
+.me_logo {
+    animation-delay: 8s;
+}
+
+.ee_logo {
+    animation-delay: 12s;
+}
+
+.mining_logo {
+    animation-delay: 16s;
+}
+
+/* Keyframes for moving the logo from left to center and then out again */
+@keyframes logoMove {
+    0%, 100% {
+        left: -500px;
+        top: -600px; /* Off-screen left */
+        opacity: 0;
+    }
+    5%{
+        opacity: 1;
+    }
+
+    10% {
+        left: 50%;
+        top: 0%; /* Center of the screen */
+        transform: translateX(-50%); /* Ensure the logo is centered */
+    }
+    11% { /* Hold the logo in the center */
+        animation-delay: 2s;
+    }
+
+    70%{
+        opacity: 0;
+    }
+
+    75%{
+        left:-9000px;
+        top: 8000px;
+    }
+
+    85% {
+        left: -500px;
+        top: 600px; /* Move it off-screen to the right */
+        opacity: 0; /* Fade out */
+    }
+    100% {
+        down: 600px;
+        left: -500px; /* Off-screen right */
+    }
+}
+
+
+
 .text-content {
     color: white;
+    position:absolute;
+    left: 600px;
 }
 .text-content h1 {
     font-family: 'Exo 2', sans-serif;
