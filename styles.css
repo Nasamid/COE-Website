@@ -451,3 +451,45 @@ li:is(:hover, :focus-within) + li + li + li + li + li + li {
     --active-lerp: var(--lerp-6);
     z-index: 1;
 }
+
+
+.policies{
+    height: 150vh;
+    background-image: url('img_src/background2.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10%;
+    position: relative; /* Add this */
+    z-index: 0;
+    left: 0px;
+    top: -600px;
+}
+.iso9001{
+    width: 10%;
+    height: 10%;
+    position: relative;
+
+}
+.VMQ h3{
+    font-family: 'Baloo Tamma 2', sans-serif;
+    font-weight: 500;
+    color: white;
+    text-align: left;
+    font-size: 2em;
+    margin: 0;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 1)); /* Drop shadow */
+}
+.VMQ p{
+    color: #FFFFFF;
+    padding: 0px;
+    text-align: left;
+    font-family: 'Dosis', sans-serif;
+    font-style: italic;
+    margin-left: 10px;
+    font-size: 1.5em;
+    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.8)); /* Drop shadow */
+}
+
